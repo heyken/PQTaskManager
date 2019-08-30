@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'PQTaskManager_Example' do
+  pod 'PQTaskManager', :path => '../'
+
+  target 'PQTaskManager_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
