@@ -270,10 +270,12 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-PQTaskManager_Example/Pods-PQTaskManager_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/PQTaskManager/PQTaskManager.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftPriorityQueue/SwiftPriorityQueue.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PQTaskManager.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftPriorityQueue.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
