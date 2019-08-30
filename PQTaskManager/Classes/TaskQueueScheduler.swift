@@ -21,15 +21,6 @@ protocol TaskQueueSchedulerType {
     func deQueueTask()
 }
 
-struct QueueAction<T> where T : Task {
-    let element:T
-}
-
-protocol TaskItemType where Element : Task {
-    associatedtype Element
-    var taskAction:QueueAction<Element> { set get }
-}
-
 class TaskQueueScheduler : NSObject {
     static public var shard = TaskQueueScheduler()
     
@@ -53,7 +44,7 @@ class TaskQueueScheduler : NSObject {
             self.runningPack = pack
             
             DispatchQueue.main.async {
-                pack.task.action.runTask(param: param)
+                pack.taskRank.taskAction.runTask(param: param)
             }
         }
     }
@@ -81,15 +72,15 @@ extension TaskQueueScheduler:TaskQueueSchedulerType {
     
     public func deQueueTask() {
         let task = priorityQueue.pop()
-        if let r = task?.task {
-            queuingCache[r.myRank] = false
+        if let r = task?.taskRank.priority {
+            queuingCache[r] = false
         }
         self.runningPack = nil
     }
     
     public func enQueueTask(pack: Pack) {
-        if queuingCache[pack.task.myRank] != true {
-            queuingCache[pack.task.myRank] = true
+        if queuingCache[pack.taskRank.priority] != true {
+            queuingCache[pack.taskRank.priority] = true
             priorityQueue.push(pack)
         }
     }
