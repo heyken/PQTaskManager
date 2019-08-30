@@ -2,6 +2,7 @@ use_frameworks!
 
 target 'PQTaskManager_Example' do
   pod 'PQTaskManager', :path => '../'
+  pod 'SwiftPriorityQueue'
 
   target 'PQTaskManager_Tests' do
     inherit! :search_paths

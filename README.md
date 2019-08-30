@@ -22,7 +22,7 @@ pod 'PQTaskManager'
 
 ## Author
 
-heyken, sheldon.fine@kakaomobility.com
+heyken(sheldon), roulette56power@gmail.com
 
 ## License
 
