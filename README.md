@@ -2,7 +2,7 @@ PQTaskManager is a continuous task manager by priority queue
 
 It is managed by task rank
 
-The task Priority is defined Enum Case
+The task priority is defined enum case
 
 # PQTaskManager
 
