@@ -1,3 +1,7 @@
+PQTaskManager is a continuous task manager by priority queue
+It is managed by task rank
+The task Priority is defined Enum Case
+
 # PQTaskManager
 
 [![CI Status](https://img.shields.io/travis/heyken/PQTaskManager.svg?style=flat)](https://travis-ci.org/heyken/PQTaskManager)
@@ -21,8 +25,11 @@ pod 'PQTaskManager'
 ```
 
 ## How to Use
-Step 1
+Step 1.
 define enum case and function for task rank
+
+implement your task logic in runTask(param:Any?)
+if you want move next task, use nextTask()
 ```ruby
 enum TestRankTasks:Int {
     case myRankA
@@ -70,12 +77,12 @@ extension TestRankTasks:TaskRank {
 }
 ```
 
-Step 2
+Step 2.
 Use enQueue for insert queue buffer
 ```ruby
  TaskQueueScheduler.shard.enQueueTask(pack: TaskPack(taskRank: TestRankTasks.myRankC,   param:nil))
  TaskQueueScheduler.shard.enQueueTask(pack: TaskPack(taskRank: TestRankTasks.myRankA,   param:nil))
- TaskQueueScheduler.shard.enQueueTask(pack: TaskPack(taskRank: TestRankTasks.myRankE,   param:nil))
+ TaskQueueScheduler.shard.enQueueTask(pack: TaskPack(taskRank: TestRankTasks.myRankB,   param:nil))
 ```
 
  and Start Task function
