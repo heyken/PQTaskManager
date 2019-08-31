@@ -31,6 +31,7 @@ Step 1.
 define enum case and function for task rank
 
 implement your task logic in runTask(param:Any?)
+
 if you want move next task, use nextTask()
 ```ruby
 enum TestRankTasks:Int {
