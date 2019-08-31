@@ -21,10 +21,10 @@ protocol TaskQueueSchedulerType {
     func deQueueTask()
 }
 
-class TaskQueueScheduler : NSObject {
+public class TaskQueueScheduler : NSObject {
     static public var shard = TaskQueueScheduler()
     
-    typealias Pack = TaskPack
+    public typealias Pack = TaskPack
     var priorityQueue = PriorityQueue<Pack>(ascending: true)
     var queuingCache = [Int:Bool]() //to use that It's not permite about duplicated element
     var runningPack:Pack?
@@ -51,31 +51,24 @@ class TaskQueueScheduler : NSObject {
 }
 
 extension TaskQueueScheduler:TaskQueueSchedulerType {
-    func startTask(){
+    public func startTask(){
         print("**** start queue ****")
         PQNotification.post()
     }
     
-    func nextTask() {
+    public func nextTask() {
         self.deQueueTask()
         PQNotification.post()
     }
     
+    public func removeAllTask() {
+        queuingCache = [Int:Bool]()
+        runningPack = nil
+        priorityQueue.clear()
+    }
+    
     public func isEmpty() -> Bool {
         return priorityQueue.isEmpty
-    }
-    
-    public func peekQueueTask() -> Pack? {
-        let task = priorityQueue.peek()
-        return task
-    }
-    
-    public func deQueueTask() {
-        let task = priorityQueue.pop()
-        if let r = task?.taskRank.priority {
-            queuingCache[r] = false
-        }
-        self.runningPack = nil
     }
     
     public func enQueueTask(pack: Pack) {
@@ -85,10 +78,17 @@ extension TaskQueueScheduler:TaskQueueSchedulerType {
         }
     }
     
-    public func removeAllTask() {
-        queuingCache = [Int:Bool]()
-        runningPack = nil
-        priorityQueue.clear()
+    func peekQueueTask() -> Pack? {
+        let task = priorityQueue.peek()
+        return task
+    }
+    
+    func deQueueTask() {
+        let task = priorityQueue.pop()
+        if let r = task?.taskRank.priority {
+            queuingCache[r] = false
+        }
+        self.runningPack = nil
     }
 }
 

@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'PQTaskManager'
-  s.version          = '0.4.0'
+  s.version          = '0.9.0'
   s.swift_version    = '4.2'
   s.summary          = 'Priority Queue Task Manager'
 
@@ -25,7 +25,7 @@ TODO: Add long description of the pod here.
   s.homepage         = 'https://github.com/heyken/PQTaskManager'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'heyken' => 'sheldon.fine@kakaomobility.com' }
+  s.author           = { 'heyken' => 'roulette56power@gmail.com' }
   s.source           = { :git => 'https://github.com/heyken/PQTaskManager.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 

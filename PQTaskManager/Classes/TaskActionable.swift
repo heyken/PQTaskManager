@@ -5,7 +5,7 @@
 //  Created by sanggyu on 10/08/2019.
 //
 
-protocol TaskActionable {
+public protocol TaskActionable {
     func runTask(param:Any?)
 }
 

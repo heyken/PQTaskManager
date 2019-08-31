@@ -8,9 +8,12 @@
 import Foundation
 
 struct PQNotification {
-    static let notiName = Notification.Name(rawValue: "PQTaskNoti")
+    static let NOTI_NAME = "pqTaskNoti"
+    static let USER_INFO = "userInfo"
+    
+    static let notiName = Notification.Name(rawValue: NOTI_NAME)
     static func post(_ object:Any? = nil) {
-        let userInfo:[String:Any]? = (object != nil ? ["userInfo":object!] : nil)
+        let userInfo:[String:Any]? = (object != nil ? [USER_INFO:object!] : nil)
         NotificationCenter.default.post(name: PQNotification.notiName,
                                         object: nil,
                                         userInfo: userInfo)
@@ -18,7 +21,7 @@ struct PQNotification {
     
     static func addNoti(completion:@escaping (_ object:AnyObject?)->()) {
         NotificationCenter.default.addObserver(forName: PQNotification.notiName, object: nil, queue: nil) { noti in
-            if let userInfo:AnyObject = noti.userInfo?["userInfo"] as AnyObject? {
+            if let userInfo = noti.userInfo?[USER_INFO] as AnyObject? {
                 completion(userInfo)
             } else {
                 completion(noti.userInfo as AnyObject?)
