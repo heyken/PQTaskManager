@@ -26,4 +26,4 @@ heyken(sheldon), roulette56power@gmail.com
 
 ## License
 
-PQTaskManager is available under the MIT license. See the LICENSE file for more info.
+PQTaskManager is available under the MIT license. See the LICENSE file for more info. 
