@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'PQTaskManager'
-  s.version          = '0.9.0'
+  s.version          = '0.9.1'
   s.swift_version    = '4.2'
   s.summary          = 'Priority Queue Task Manager'
 
